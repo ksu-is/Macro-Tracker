@@ -6,4 +6,8 @@
 - [x] Create the Project Roadmap
 - [x] Search for a related existing repository on Github and clone it to your team
 - Sprint 2
-  
+- [x] Update roadmap for sprint 2
+- [] Make at least six significant sized commits with in depth comments explaining what was done
+- [] Set up sprint 3 roadmap goals
+- [] Complete/Mark complete sprint 2 roadmap section
+- Sprint 3
