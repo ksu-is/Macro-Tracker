@@ -1,5 +1,24 @@
+import os
+
+user = input("what is your name: ")
+def load_profile(user):
+    file_name = user + "_profile.txt"
+    if os.path.exists(file_name):
+        file = open(file_name, "r")
+        data = file.read()
+        file.close()
+        return data
+    else:
+        return None
+
 def user_info():
-    user = input("what is your name: ")
+    user_profile_data = load_profile(user)
+    if user_profile_data:
+        print("User profile loaded successfully!\n")
+        print(user_profile_data)
+        return None
+    else:
+        print("User profile not found.")
     
     while True:
         age = input('What is your age: ')
@@ -75,6 +94,7 @@ def user_info():
         bmr_result = hm + wm - am - c1
     #BMR = (10 x weight) + (6.25 x height) – (5 x age) + 5 (male)
     #BMR = (10 x weight) + (6.25 x height) – (5 x age) - 161 (female)
+    
     return (int(bmr_result,))
     
 
@@ -127,7 +147,6 @@ def gain_or_lose(activity_level_num):
     print('\nin order to', goals, 'weight, your daily caloric goals should be', int(calories))
     return calories
     
-
 def calculate_macros(calories, activity_level):
     
 
@@ -148,9 +167,38 @@ def calculate_macros(calories, activity_level):
         protein = (calories * .3)/4
         fat = (calories * .25)/9
 
-    print('Your macronutrient breakdown is recommened as below\n Carbohydrates:', int(carbs), 'grams\n Protein:', int(protein), 'grams\n Fats:', int(fat),'grams' )
+
+    print('Your macronutrient breakdown is recommended as below\n Carbohydrates:', int(carbs), 'grams\n Protein:', int(protein), 'grams\n Fats:', int(fat),'grams' )
+    return carbs, protein, fat
+
+def save_profile(user, bmr_result, calories, carbs, protein, fat):
+    file_name = user + "_profile.txt"
+    profile_file = open(file_name, "w")
+    profile_file.write("Name: " + user + "\n")
+    profile_file.write("BMR: " + str(bmr_result) + "\n")
+    profile_file.write("Calories: " + str(calories) + "\n")
+    profile_file.write("Macros:\n")
+    profile_file.write("  Carbs: " + str(int(carbs)) + " grams\n")
+    profile_file.write("  Protein: " + str(int(protein)) + " grams\n")
+    profile_file.write("  Fat: " + str(int(fat)) + " grams\n")
+    profile_file.close()
 
 
-activity_level, activity_level_num = calculate_activity(user_info())
-calculate_macros(gain_or_lose(activity_level_num), activity_level)
-    
+
+bmr_result = user_info()
+if bmr_result:
+    activity_level, activity_level_num = calculate_activity(bmr_result)
+    calories = gain_or_lose(activity_level_num)
+    carbs, protein, fat = calculate_macros(calories, activity_level)
+
+    while True:
+        answer = input('Do you want to save your data? (yes or no): \n')
+        if answer.lower() == 'yes':
+            save_profile(user, bmr_result, calories, carbs, protein, fat)
+            print("Profile saved successfully!")
+            break
+        elif answer.lower() == 'no':
+            print("You have chosen to not save your profile.")
+            break
+        else:
+            print("Invalid input! Please enter 'yes' or 'no'.")
