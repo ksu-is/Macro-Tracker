@@ -1,9 +1,38 @@
 def user_info():
-    age = int(input('What is your age: '))
-    sex = input('What is your sex (male or female): ')
-    weight = int(input('What is your weight in pounds : '))
-    weight = weight/2.205
-    height = int(input('What is your height in inches: '))
+    while True:
+        age = input('What is your age: ')
+        if age.isdigit() and int(age) > 0:
+            age = int(age)
+            break
+        else:
+            print("Invalid input! Age must be a number greater than 0.")
+
+    while True:  
+        sex = input('What is your sex (male or female): ')
+        if sex.lower() == 'male' or sex.lower() == 'female':
+            sex = sex.lower()
+            break
+        else:   
+            print("Invalid input! Input must either be male or female.")
+
+    while True:
+        weight = input('What is your weight in pounds : ')
+        if weight.isdigit() and int(weight) > 0:
+            weight = int(weight)
+            break
+        else:
+            print("Invalid input! Weight must be a number greater than 0.")
+
+    while True:
+        height = input('What is your height in inches: ')
+        if height.isdigit() and int(height) > 0:
+            height = int(height)
+            break
+        else:
+            print("Invalid input! Height must be a number greater than 0.")
+                
+
+    weight = weight/2.205        
     height = height * 2.54
 
     if sex == 'male':
@@ -24,7 +53,12 @@ def user_info():
     
 
 def calculate_activity(bmr_result): 
-    activity_level = input('What is your activity level (none, little, moderate, lots, extra): ')
+    while True:
+        activity_level = input('What is your activity level (none, little, moderate, lots, extra): ')
+        if activity_level.lower() in ['none', 'little', 'moderate', 'lots', 'extra']:
+            break
+        else:
+            print("Invalid input! Pleaase choose a word from the provided list.")
 
     if activity_level == 'none':
         activity_level_num = 1.2 * bmr_result
@@ -40,14 +74,25 @@ def calculate_activity(bmr_result):
     return activity_level, activity_level_num
 
 def gain_or_lose(activity_level_num):
-    goals = input('Do you want to lose, maintain, or gain weight: ')
+    while True:
+        goals = input('Do you want to lose, maintain, or gain weight: ')
+        if goals in ['lose', 'maintain','gain']:
+            break
+        else:
+            print("Invalid input! please choose one of the words provided in the prompt.")
 
     if goals == 'lose':
         calories = activity_level_num - 500
     elif goals == 'maintain':
         calories = activity_level_num
     elif goals == 'gain':
-        gain = int(input('Gain 0.5 or 1 pound per week? Enter 0.5 or 1: '))
+        while True:
+            gain = float(input('Gain 0.5 or 1 pound per week?: '))
+            if gain == 0.5 or gain == 1 or gain == .5:
+                gain = gain
+                break
+            else:
+                print("Invalid input! Please enter either '0.5' or '1'.")
         if gain == 0.5: 
             calories = activity_level_num + 250
         elif gain == 1:
