@@ -1,4 +1,6 @@
 def user_info():
+    user = input("what is your name: ")
+    
     while True:
         age = input('What is your age: ')
         if age.isdigit() and int(age) > 0:
@@ -16,24 +18,48 @@ def user_info():
             print("Invalid input! Input must either be male or female.")
 
     while True:
-        weight = input('What is your weight in pounds : ')
-        if weight.isdigit() and int(weight) > 0:
-            weight = int(weight)
+        measuring_system = input("Do you use the Metric System or the Imperial System: ")
+        if measuring_system.lower() == 'imperial':
+            measuring_system = measuring_system
+            break
+        elif measuring_system.lower() == 'metric':
+            measuring_system = measuring_system.lower()
             break
         else:
-            print("Invalid input! Weight must be a number greater than 0.")
+            print("Invalid input! Input must be 'imperial' or 'metric'.")
 
-    while True:
-        height = input('What is your height in inches: ')
-        if height.isdigit() and int(height) > 0:
-            height = int(height)
-            break
-        else:
-            print("Invalid input! Height must be a number greater than 0.")
+    if measuring_system == 'imperial':
+        while True:
+            weight = input('What is your weight in pounds: ')
+            if weight.isdigit() and int(weight) > 0:
+                weight = int(weight)/2.205
+                break
+            else:
+                print("Invalid input! Weight must be a number greater than 0.")
+        while True:
+            height = input('What is your height in inches: ')
+            if height.isdigit() and int(height) > 0:
+                height = int(height)* 2.54
+                break
+            else:
+                print("Invalid input! Height must be a number greater than 0.")
+    else:
+        while True:
+            weight = input('What is your weight in kilograms: ')
+            if weight.isdigit() and int(weight) > 0:
+                weight = int(weight)
+                break
+            else:
+                print("Invalid input! Weight must be a number greater than 0.")
+
+        while True:
+            height = input('What is your height in centimeters: ')
+            if height.isdigit() and int(height) > 0:
+                height = int(height)
+                break
+            else:
+                print("Invalid input! Height must be a number greater than 0.")
                 
-
-    weight = weight/2.205        
-    height = height * 2.54
 
     if sex == 'male':
         c1 = 5
@@ -98,7 +124,7 @@ def gain_or_lose(activity_level_num):
         elif gain == 1:
             calories = activity_level_num + 500
 
-    print('\nin order to', goals, 'weight, your daily caloric goals should be', int(calories),'!')
+    print('\nin order to', goals, 'weight, your daily caloric goals should be', int(calories))
     return calories
     
 
