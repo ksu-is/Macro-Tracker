@@ -7,7 +7,14 @@
 - [x] Search for a related existing repository on Github and clone it to your team
 - Sprint 2
 - [x] Update roadmap for sprint 2
-- [] Make at least six significant sized commits with in depth comments explaining what was done
-- [] Set up sprint 3 roadmap goals
-- [] Complete/Mark complete sprint 2 roadmap section
+- [x] Make at least six significant sized commits with in depth comments explaining what was done
+- [x] Set up sprint 3 roadmap goals
+- [x] Complete sprint 2 checklist and make sure all items in sprint 1 and 2 are completed and marked
 - Sprint 3
+-[] Submit the Sprint 2 quiz in D2L
+-[] Additional coding progress
+-[] Refine and Test code
+-[] Create 1 PowerPoint slide introducing project
+-[] Upload PowerPoint to D2L and Github
+-[] Sign up for Presentation on teams
+-[] Complete checklist and make sure all items are completed and marked
