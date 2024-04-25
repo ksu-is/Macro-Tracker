@@ -11,7 +11,7 @@
 - [x] Set up sprint 3 roadmap goals
 - [x] Complete sprint 2 checklist and make sure all items in sprint 1 and 2 are completed and marked
 - Sprint 3
--[] Submit the Sprint 2 quiz in D2L
+-[x] Submit the Sprint 2 quiz in D2L
 -[] Additional coding progress
 -[] Refine and Test code
 -[] Create 1 PowerPoint slide introducing project
