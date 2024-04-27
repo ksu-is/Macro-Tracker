@@ -14,7 +14,7 @@
 -[x] Submit the Sprint 2 quiz in D2L
 -[] Additional coding progress
 -[] Refine and Test code
--[] Create 1 PowerPoint slide introducing project
--[] Upload PowerPoint to D2L and Github
+-[x] Create 1 PowerPoint slide introducing project
+-[x] Upload PowerPoint to D2L and Github
 -[] Sign up for Presentation on teams
 -[] Complete checklist and make sure all items are completed and marked
