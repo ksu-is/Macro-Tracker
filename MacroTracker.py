@@ -1,6 +1,10 @@
 import os
+import tkinter as tk
+from tkinter import simpledialog, messagebox
 
-user = input("what is your name: ")
+
+
+
 def load_profile(user):
     file_name = user + "_profile.txt"
     if os.path.exists(file_name):
@@ -12,13 +16,14 @@ def load_profile(user):
         return None
 
 def user_info():
+
+    user = simpledialog.askstring("Input", "Enter your name:")
     user_profile_data = load_profile(user)
     if user_profile_data:
-        print("User profile loaded successfully!\n")
-        print(user_profile_data)
+        messagebox.showinfo("Success", "User profile loaded successfully!\n" + user_profile_data)
         return None
     else:
-        print("User profile not found.")
+        messagebox.showwarning("Warning", "User profile not found.")
     
     while True:
         age = input('What is your age: ')
@@ -194,7 +199,7 @@ if bmr_result:
     while True:
         answer = input('Do you want to save your data? (yes or no): \n')
         if answer.lower() == 'yes':
-            save_profile(user, bmr_result, calories, carbs, protein, fat)
+            save_profile(user.get, bmr_result, calories, carbs, protein, fat)
             print("Profile saved successfully!")
             break
         elif answer.lower() == 'no':
