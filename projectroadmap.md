@@ -12,9 +12,9 @@
 - [x] Complete sprint 2 checklist and make sure all items in sprint 1 and 2 are completed and marked
 - Sprint 3
 - [x] Submit the Sprint 2 quiz in D2L
-- [] Additional coding progress
-- [] Refine and Test code
+- [x] Additional coding progress
+- [x] Refine and Test code
 - [x] Create 1 PowerPoint slide introducing project
 - [x] Upload PowerPoint to D2L and Github
-- [] Sign up for Presentation on teams
-- [] Complete checklist and make sure all items are completed and marked
+- [x] Sign up for Presentation on teams
+- [x] Complete checklist and make sure all items are completed and marked
