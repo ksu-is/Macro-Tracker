@@ -25,64 +25,64 @@ def user_info():
     else:
         messagebox.showwarning("Warning", "User profile not found.")
     
-    while True:
-        age = input('What is your age: ')
-        if age.isdigit() and int(age) > 0:
-            age = int(age)
-            break
+        while True:
+            age = simpledialog.askstring("Input", "What is your age: ")
+            if age.isdigit() and int(age) > 0:
+                age = int(age)
+                break
+            else:
+                messagebox.showwarning("Warning", "Invalid input! Age must be a number greater than 0.")
+
+        while True:  
+            sex = simpledialog.askstring("Input","What is your sex (male or female): ")
+            if sex.lower() == 'male' or sex.lower() == 'female':
+                sex = sex.lower()
+                break
+            else:   
+                messagebox.showwarning("Warning", "Invalid input! Input must either be male or female.")
+
+        while True:
+            measuring_system = simpledialog.askstring("Input", "Do you use the Metric System or the Imperial System: ")
+            if measuring_system.lower() == 'imperial':
+                measuring_system = measuring_system
+                break
+            elif measuring_system.lower() == 'metric':
+                measuring_system = measuring_system.lower()
+                break
+            else:
+                messagebox.showwarning("Warning", "Invalid input! Input must be 'imperial' or 'metric'.")
+
+        if measuring_system == 'imperial':
+            while True:
+                weight = simpledialog.askstring("Input", "What is your weight in pounds: ")
+                if weight.isdigit() and int(weight) > 0:
+                    weight = int(weight)/2.205
+                    break
+                else:
+                    messagebox.showwarning("Warning", "Invalid input! Weight must be a number greater than 0.")
+            while True:
+                height = simpledialog.askstring("Input", "What is your height in inches: ")
+                if height.isdigit() and int(height) > 0:
+                    height = int(height)* 2.54
+                    break
+                else:
+                    messagebox.showwarning("Warning", "Invalid input! Height must be a number greater than 0.")
         else:
-            print("Invalid input! Age must be a number greater than 0.")
+            while True:
+                weight = simpledialog.askstring("Input", "What is your weight in kilograms: ")
+                if weight.isdigit() and int(weight) > 0:
+                    weight = int(weight)
+                    break
+                else:
+                    messagebox.showwarning("Warning", "Invalid input! Weight must be a number greater than 0.")
 
-    while True:  
-        sex = input('What is your sex (male or female): ')
-        if sex.lower() == 'male' or sex.lower() == 'female':
-            sex = sex.lower()
-            break
-        else:   
-            print("Invalid input! Input must either be male or female.")
-
-    while True:
-        measuring_system = input("Do you use the Metric System or the Imperial System: ")
-        if measuring_system.lower() == 'imperial':
-            measuring_system = measuring_system
-            break
-        elif measuring_system.lower() == 'metric':
-            measuring_system = measuring_system.lower()
-            break
-        else:
-            print("Invalid input! Input must be 'imperial' or 'metric'.")
-
-    if measuring_system == 'imperial':
-        while True:
-            weight = input('What is your weight in pounds: ')
-            if weight.isdigit() and int(weight) > 0:
-                weight = int(weight)/2.205
-                break
-            else:
-                print("Invalid input! Weight must be a number greater than 0.")
-        while True:
-            height = input('What is your height in inches: ')
-            if height.isdigit() and int(height) > 0:
-                height = int(height)* 2.54
-                break
-            else:
-                print("Invalid input! Height must be a number greater than 0.")
-    else:
-        while True:
-            weight = input('What is your weight in kilograms: ')
-            if weight.isdigit() and int(weight) > 0:
-                weight = int(weight)
-                break
-            else:
-                print("Invalid input! Weight must be a number greater than 0.")
-
-        while True:
-            height = input('What is your height in centimeters: ')
-            if height.isdigit() and int(height) > 0:
-                height = int(height)
-                break
-            else:
-                print("Invalid input! Height must be a number greater than 0.")
+            while True:
+                height = simpledialog.askstring("Input", "What is your height in centimeters: ")
+                if height.isdigit() and int(height) > 0:
+                    height = int(height)
+                    break
+                else:
+                    messagebox.showwarning("Warning", "Invalid input! Height must be a number greater than 0.")
                 
 
     if sex == 'male':
@@ -100,16 +100,16 @@ def user_info():
     #BMR = (10 x weight) + (6.25 x height) – (5 x age) + 5 (male)
     #BMR = (10 x weight) + (6.25 x height) – (5 x age) - 161 (female)
     
-    return (int(bmr_result,))
+    return (int(bmr_result,)), user
     
 
 def calculate_activity(bmr_result): 
     while True:
-        activity_level = input('What is your activity level (none, little, moderate, lots, extra): ')
+        activity_level = simpledialog.askstring("Input", "What is your activity level (none, little, moderate, lots, extra): ")
         if activity_level.lower() in ['none', 'little', 'moderate', 'lots', 'extra']:
             break
         else:
-            print("Invalid input! Pleaase choose a word from the provided list.")
+            messagebox.showwarning("Warning", "Invalid input! Pleaase choose a word from the provided list.")
 
     if activity_level == 'none':
         activity_level_num = 1.2 * bmr_result
@@ -126,11 +126,11 @@ def calculate_activity(bmr_result):
 
 def gain_or_lose(activity_level_num):
     while True:
-        goals = input('Do you want to lose, maintain, or gain weight: ')
-        if goals in ['lose', 'maintain','gain']:
+        goals = simpledialog.askstring("Input", "Do you want to lose, maintain, or gain weight: ")
+        if goals.lower() in ['lose', 'maintain','gain']:
             break
         else:
-            print("Invalid input! please choose one of the words provided in the prompt.")
+            messagebox.showwarning("Warning", "Invalid input! please choose one of the words provided in the prompt.")
 
     if goals == 'lose':
         calories = activity_level_num - 500
@@ -138,18 +138,18 @@ def gain_or_lose(activity_level_num):
         calories = activity_level_num
     elif goals == 'gain':
         while True:
-            gain = float(input('Gain 0.5 or 1 pound per week?: '))
+            gain = float(simpledialog.askstring("Input", "Gain 0.5 or 1 pound per week?: "))
             if gain == 0.5 or gain == 1 or gain == .5:
                 gain = gain
                 break
             else:
-                print("Invalid input! Please enter either '0.5' or '1'.")
+                messagebox.showwarning("Warning", "Invalid input! Please enter either '0.5' or '1'.")
         if gain == 0.5: 
             calories = activity_level_num + 250
         elif gain == 1:
             calories = activity_level_num + 500
 
-    print('\nin order to', goals, 'weight, your daily caloric goals should be', int(calories))
+    messagebox.showinfo("Info","\nin order to " + goals + " weight, your daily caloric goals should be: " + str(int(calories)))
     return calories
     
 def calculate_macros(calories, activity_level):
@@ -173,7 +173,7 @@ def calculate_macros(calories, activity_level):
         fat = (calories * .25)/9
 
 
-    print('Your macronutrient breakdown is recommended as below\n Carbohydrates:', int(carbs), 'grams\n Protein:', int(protein), 'grams\n Fats:', int(fat),'grams' )
+    messagebox.showinfo("Info", "Your macronutrient breakdown is recommended as below\n Carbohydrates: " + str(int(carbs)) + "grams\n Protein: " + str(int(protein)) + "grams\n Fats:" + str(int(fat)) + "grams")
     return carbs, protein, fat
 
 def save_profile(user, bmr_result, calories, carbs, protein, fat):
@@ -181,7 +181,7 @@ def save_profile(user, bmr_result, calories, carbs, protein, fat):
     profile_file = open(file_name, "w")
     profile_file.write("Name: " + user + "\n")
     profile_file.write("BMR: " + str(bmr_result) + "\n")
-    profile_file.write("Calories: " + str(calories) + "\n")
+    profile_file.write("Calories: " + str(int(calories)) + "\n")
     profile_file.write("Macros:\n")
     profile_file.write("  Carbs: " + str(int(carbs)) + " grams\n")
     profile_file.write("  Protein: " + str(int(protein)) + " grams\n")
@@ -189,21 +189,24 @@ def save_profile(user, bmr_result, calories, carbs, protein, fat):
     profile_file.close()
 
 
+root = tk.Tk()
+root.withdraw()
 
-bmr_result = user_info()
+
+bmr_result, user = user_info()
 if bmr_result:
     activity_level, activity_level_num = calculate_activity(bmr_result)
     calories = gain_or_lose(activity_level_num)
     carbs, protein, fat = calculate_macros(calories, activity_level)
 
     while True:
-        answer = input('Do you want to save your data? (yes or no): \n')
+        answer = simpledialog.askstring("Input", "Do you want to save your data? (yes or no): \n")
         if answer.lower() == 'yes':
-            save_profile(user.get, bmr_result, calories, carbs, protein, fat)
-            print("Profile saved successfully!")
+            save_profile(user, bmr_result, calories, carbs, protein, fat)
+            messagebox.showinfo("Success", "Profile saved successfully!")
             break
         elif answer.lower() == 'no':
-            print("You have chosen to not save your profile.")
+            messagebox.showinfo("Info", "You have chosen to not save your profile.")
             break
         else:
-            print("Invalid input! Please enter 'yes' or 'no'.")
+            messagebox.showwarning("Warning", "Invalid input! Please enter 'yes' or 'no'.")
