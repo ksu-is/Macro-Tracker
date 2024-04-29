@@ -1,6 +1,6 @@
-Name: Michael
+Name: michael
 BMR: 1711
-Calories: 3750.8999999999996
+Calories: 3750
 Macros:
   Carbs: 515 grams
   Protein: 187 grams
